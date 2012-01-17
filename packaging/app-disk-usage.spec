@@ -1,10 +1,12 @@
 
 Name: app-disk-usage
+Group: ClearOS/Apps
 Version: 6.2.0.beta3
 Release: 1%{dist}
 Summary: Disk Usage
 License: GPLv3
-Group: ClearOS/Apps
+Packager: ClearFoundation
+Vendor: ClearFoundation
 Source: %{name}-%{version}.tar.gz
 Buildarch: noarch
 Requires: %{name}-core = %{version}-%{release}
@@ -15,8 +17,8 @@ Displays your system hard disk usage.
 
 %package core
 Summary: Disk Usage - APIs and install
-License: LGPLv3
 Group: ClearOS/Libraries
+License: LGPLv3
 Requires: app-base-core
 Requires: philesight >= 20111015-3
 
