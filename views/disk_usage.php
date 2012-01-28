@@ -40,7 +40,13 @@ $this->lang->load('disk_usage');
 // Main
 ///////////////////////////////////////////////////////////////////////////////
 
-echo "<div id='working'>&nbsp;</div>";
-echo "<div id='usage'><a href='" . clearos_app_htdocs('disk_usage') . "/get_image.php?path=$real_path&amp;'>";
+echo "<div id='working' style='display: none'>";
+echo infobox_highlight(
+    lang('base_status'),
+    "<div class='theme-loading-normal'>" . lang('disk_usage_updating_disk_usage_information') . "</div>"
+);
+echo "</div>";
+
+echo "<div id='usage' style='display: none'><a href='" . clearos_app_htdocs('disk_usage') . "/get_image.php?path=$real_path&amp;'>";
 echo "<img width='500' height='500' src='/app/disk_usage/get_image/" . $encoded_path . "' ismap='ismap' alt='-' />";
 echo "</a></div>";

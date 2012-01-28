@@ -52,13 +52,10 @@ header('Content-Type:application/x-javascript');
 
 $(document).ready(function() {
 
-    lang_busy = '<?php echo lang("disk_usage_updating_disk_usage_information"); ?>';
     reload = false;
 
     $("#working").hide();
     $("#usage").hide();
-
-    $("#working").html('<div class="theme-loading-normal">' + lang_busy + '</div>');
 
     getUsageData();
 
