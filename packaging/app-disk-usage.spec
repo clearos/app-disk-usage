@@ -1,7 +1,7 @@
 
 Name: app-disk-usage
 Epoch: 1
-Version: 1.0.10
+Version: 1.1.0
 Release: 1%{dist}
 Summary: Disk Usage
 License: GPLv3
@@ -15,7 +15,7 @@ Requires: app-base
 Displays your system hard disk usage.
 
 %package core
-Summary: Disk Usage - APIs and install
+Summary: Disk Usage - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
