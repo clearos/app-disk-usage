@@ -12,7 +12,7 @@ Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-Displays your system hard disk usage.
+The Disk Usage app displays your system hard disk usage and provides a clickable drill down report.
 
 %package core
 Summary: Disk Usage - Core
@@ -22,7 +22,7 @@ Requires: app-base-core
 Requires: philesight >= 20111015-3
 
 %description core
-Displays your system hard disk usage.
+The Disk Usage app displays your system hard disk usage and provides a clickable drill down report.
 
 This package provides the core API and libraries.
 
