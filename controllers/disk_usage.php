@@ -3,9 +3,9 @@
 /**
  * Disk Usage controller.
  *
- * @category   Apps
- * @package    Disk_Usage
- * @subpackage Controllers
+ * @category   apps
+ * @package    disk-usage
+ * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -42,9 +42,9 @@ use \clearos\apps\disk_usage\Disk_Usage as Disk_Usage_Class;
 /**
  * Disk Usage controller.
  *
- * @category   Apps
- * @package    Disk_Usage
- * @subpackage Controllers
+ * @category   apps
+ * @package    disk-usage
+ * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later

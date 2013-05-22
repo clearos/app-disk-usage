@@ -3,9 +3,9 @@
 /**
  * Disk usage javascript helper.
  *
- * @category   Apps
- * @package    Disk_Usage
- * @subpackage Javascript
+ * @category   apps
+ * @package    disk-usage
+ * @subpackage javascript
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later

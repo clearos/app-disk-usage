@@ -3,9 +3,9 @@
 /**
  * Disk usage image.
  *
- * @category   Apps
- * @package    Disk_Usage
- * @subpackage Helper
+ * @category   apps
+ * @package    disk-usage
+ * @subpackage configuration
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
