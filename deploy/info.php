@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'disk_usage';
-$app['version'] = '1.6.5';
+$app['version'] = '2.0.14';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -20,7 +20,7 @@ $app['tooltip'] = lang('disk_usage_app_tooltip');
 
 $app['name'] = lang('disk_usage_app_name');
 $app['category'] = lang('base_category_reports');
-$app['subcategory'] = lang('base_category_system');
+$app['subcategory'] = lang('base_subcategory_performance_and_resources');
 
 /////////////////////////////////////////////////////////////////////////////
 // Packaging
