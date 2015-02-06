@@ -3,7 +3,7 @@ Name: app-disk-usage
 Epoch: 1
 Version: 2.0.14
 Release: 1%{dist}
-Summary: Disk Usage
+Summary: Disk Usage Report
 License: GPLv3
 Group: ClearOS/Apps
 Source: %{name}-%{version}.tar.gz
@@ -12,17 +12,17 @@ Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-The Disk Usage app displays your system hard disk usage and provides a clickable drill down report.
+The Disk Usage Report app displays your system hard disk usage and provides a clickable drill down report.
 
 %package core
-Summary: Disk Usage - Core
+Summary: Disk Usage Report - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: philesight >= 20111015-3
 
 %description core
-The Disk Usage app displays your system hard disk usage and provides a clickable drill down report.
+The Disk Usage Report app displays your system hard disk usage and provides a clickable drill down report.
 
 This package provides the core API and libraries.
 
