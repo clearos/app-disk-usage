@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Philesight class.
+ * Duc class.
  *
  * @category   apps
  * @package    disk-usage
  * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
+ * @copyright  2011-2015 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/disk_usage/
  */
@@ -77,26 +77,26 @@ clearos_load_library('base/Validation_Exception');
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * Philesight class.
+ * Duc class.
  *
  * @category   apps
  * @package    disk-usage
  * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
+ * @copyright  2011-2015 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/disk_usage/
  */
 
-class Philesight extends Engine
+class Duc extends Engine
 {
     ///////////////////////////////////////////////////////////////////////////////
     // C O N S T A N T S
     ///////////////////////////////////////////////////////////////////////////////
 
-    const COMMAND_PHILESIGHT_CLI = '/usr/sbin/philesightcli';
-    const COMMAND_PHILESIGHT_UPDATEDB = '/usr/sbin/philesight-updatedb';
-    const FILE_DATA = '/var/clearos/disk_usage/ps.db';
+    const COMMAND_DUC = '/usr/bin/duc';
+    const COMMAND_DUC_UPDATEDB = '/usr/sbin/duc-updatedb';
+    const FILE_DATA = '/var/clearos/disk_usage/duc.db';
     const MAX_COORDINATE = 100000;
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,7 @@ class Philesight extends Engine
     ///////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Philesight constructor.
+     * Duc constructor.
      */
 
     public function __construct()
@@ -113,11 +113,11 @@ class Philesight extends Engine
     }
 
     /**
-     * Returns a Philesight PNG image.
+     * Returns a Duc PNG image.
      *
      * @param string $path path
      *
-     * @return image Philesight image
+     * @return image Duc image
      * @throws Engine_Exception
      */
 
@@ -129,7 +129,7 @@ class Philesight extends Engine
 
         Validation_Exception::is_valid($this->validate_path($path));
 
-        $command = escapeshellcmd(self::COMMAND_PHILESIGHT_CLI . ' --action image --path ' . $path);
+        $command = escapeshellcmd(self::COMMAND_DUC . ' --action image --path ' . $path);
 
         ob_start();
         passthru($command);
@@ -160,7 +160,7 @@ class Philesight extends Engine
         Validation_Exception::is_valid($this->validate_coordinate($ycoord));
 
         $command = escapeshellcmd(
-            self::COMMAND_PHILESIGHT_CLI .  ' ' .
+            self::COMMAND_DUC .  ' ' .
             '--action find' . ' ' .
             '--path ' . $path .  ' ' .
             '--xcoord ' . $xcoord . ' ' . 
@@ -175,9 +175,9 @@ class Philesight extends Engine
     }
 
     /**
-     * Returns state of Philesight.
+     * Returns state of Duc.
      *
-     * @return boolean TRUE if Philesight has been initialized
+     * @return boolean TRUE if Duc has been initialized
      * @throws Engine_Exception
      */
 
@@ -208,7 +208,7 @@ class Philesight extends Engine
         $options['validate_exit_code'] = FALSE;
 
         $shell = new Shell();
-        $shell->execute(self::COMMAND_PHILESIGHT_UPDATEDB, '', TRUE, $options);
+        $shell->execute(self::COMMAND_DUC_UPDATEDB, '', TRUE, $options);
     }
 
     ///////////////////////////////////////////////////////////////////////////////

@@ -49,15 +49,15 @@ require_once $bootstrap . '/bootstrap.php';
 // Classes
 //--------
 
-use \clearos\apps\disk_usage\Philesight as Philesight;
+use \clearos\apps\disk_usage\Duc as Duc;
 
-clearos_load_library('disk_usage/Philesight');
+clearos_load_library('disk_usage/Duc');
 
 ///////////////////////////////////////////////////////////////////////////////
 // M A I N
 ///////////////////////////////////////////////////////////////////////////////
 
-$philesight = new Philesight();
+$duc = new Duc();
 
 $real_path = isset($_GET['path']) ? trim($_GET['path']) : '/';
 
@@ -68,20 +68,20 @@ $ycoord = 0;
 if (preg_match('/\?(\d+),(\d+)/', $_SERVER['QUERY_STRING'], $matches)) {
     $xcoord = $matches[1];
     $ycoord = $matches[2];
-    $real_path = trim($philesight->get_path($real_path, $xcoord, $ycoord));
+    $real_path = trim($duc->get_path($real_path, $xcoord, $ycoord));
 }
 
 // Validate
 //---------
 
 try {
-    if ($philesight->validate_path($real_path))
+    if ($duc->validate_path($real_path))
         throw new \Exception(lang('disk_usage_path_invalid'));
 
-    if ($philesight->validate_coordinate($xcoord))
+    if ($duc->validate_coordinate($xcoord))
         throw new \Exception(lang('disk_usage_coordinate_invalid'));
 
-    if ($philesight->validate_coordinate($ycoord))
+    if ($duc->validate_coordinate($ycoord))
         throw new \Exception(lang('disk_usage_coordinate_invalid'));
 } catch (Engine_Exception $e) {
     return;

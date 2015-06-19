@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'disk_usage';
-$app['version'] = '2.0.14';
+$app['version'] = '2.1.0';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -27,7 +27,7 @@ $app['subcategory'] = lang('base_subcategory_performance_and_resources');
 /////////////////////////////////////////////////////////////////////////////
 
 $app['core_requires'] = array(
-    'philesight >= 20111015-3'
+    'duc >= 1.3.3'
 );
 
 $app['core_file_manifest'] = array( 
@@ -35,17 +35,21 @@ $app['core_file_manifest'] = array(
         'target' => '/etc/cron.d/app-disk-usage',
         'mode' => '0644',
     ),
-    'philesight-updatedb' => array(
-        'target' => '/usr/sbin/philesight-updatedb',
+    'duc-updatedb' => array(
+        'target' => '/usr/sbin/duc-updatedb',
         'mode' => '0755',
     )
 );
 
 $app['core_directory_manifest'] = array(
-   '/var/clearos/disk_usage' => array('mode' => '755', 'owner' => 'webconfig', 'group' => 'webconfig')
+   '/var/clearos/disk_usage' => array(
+       'mode' => '755',
+       'owner' => 'webconfig',
+       'group' => 'webconfig'
+    )
 );
 
 $app['delete_dependency'] = array(
     'app-disk-usage-core',
-    'philesight'
+    'duc'
 );

@@ -64,8 +64,10 @@ class Disk_Usage extends ClearOS_Controller
         // Load dependencies
         //------------------
 
+echo "hello";
+exit();
         $this->lang->load('disk_usage');
-        $this->load->library('disk_usage/Philesight');
+        $this->load->library('disk_usage/Duc');
 
         // Set default to / if path is not specified, decode
         //--------------------------------------------------
@@ -80,13 +82,13 @@ class Disk_Usage extends ClearOS_Controller
         // This is to catch security shenanigans, end users won't see this.
 
         try {
-            if ($this->philesight->validate_path($real_path))
+            if ($this->duc->validate_path($real_path))
                 throw new \Exception(lang('disk_usage_path_invalid'));
 
-            if ($this->philesight->validate_coordinate($xcoord))
+            if ($this->duc->validate_coordinate($xcoord))
                 throw new \Exception(lang('disk_usage_coordinate_invalid'));
 
-            if ($this->philesight->validate_coordinate($ycoord))
+            if ($this->duc->validate_coordinate($ycoord))
                 throw new \Exception(lang('disk_usage_coordinate_invalid'));
         } catch (Engine_Exception $e) {
             $this->page->view_exception($e);
@@ -97,7 +99,7 @@ class Disk_Usage extends ClearOS_Controller
         //---------------
 
         try {
-            $data['initialized'] = $this->philesight->is_initialized();
+            $data['initialized'] = $this->duc->is_initialized();
             $data['real_path'] = $real_path;
             $data['encoded_path'] = $encoded_path;
             $data['xcoord'] = $xcoord;
@@ -111,7 +113,7 @@ class Disk_Usage extends ClearOS_Controller
         //-----------------------------------
 
         if (! $data['initialized'])
-            $this->philesight->update_database();
+            $this->duc->update_database();
 
         // Load view
         //----------
@@ -129,18 +131,18 @@ class Disk_Usage extends ClearOS_Controller
 
     function get_image($encoded_path)
     {
-        $this->load->library('disk_usage/Philesight');
+        $this->load->library('disk_usage/Duc');
 
         $real_path = base64_decode(strtr($encoded_path, '-_.', '+/='));
 
         // Validation
         //-----------
 
-        if ($this->philesight->validate_path($real_path))
+        if ($this->duc->validate_path($real_path))
             return;
 
         header("Content-type: image/png");
-        echo $this->philesight->get_image($real_path);
+        echo $this->duc->get_image($real_path);
     }
 
     /**
@@ -154,14 +156,14 @@ class Disk_Usage extends ClearOS_Controller
         // Load dependencies
         //------------------
 
-        $this->load->library('disk_usage/Philesight');
+        $this->load->library('disk_usage/Duc');
 
         // Run synchronize
         //----------------
 
         try {
             $data['error_code'] = 0;
-            $data['state'] = $this->philesight->is_initialized();
+            $data['state'] = $this->duc->is_initialized();
         } catch (Exception $e) {
             $data['error_code'] = clearos_exception_code($e);
             $data['error_message'] = clearos_exception_message($e);
