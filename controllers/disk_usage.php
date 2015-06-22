@@ -59,51 +59,22 @@ class Disk_Usage extends ClearOS_Controller
      * @return view
      */
 
-    function index($encoded_path = NULL, $xcoord = 0, $ycoord = 0)
+    function index()
     {
         // Load dependencies
         //------------------
 
-echo "hello";
-exit();
         $this->lang->load('disk_usage');
         $this->load->library('disk_usage/Duc');
-
-        // Set default to / if path is not specified, decode
-        //--------------------------------------------------
-
-        if (is_null($encoded_path))
-            $encoded_path = strtr(base64_encode('/'),  '+/=', '-_.');
-
-        $real_path = base64_decode(strtr($encoded_path, '-_.', '+/='));
-
-        // Validation
-        //-----------
-        // This is to catch security shenanigans, end users won't see this.
-
-        try {
-            if ($this->duc->validate_path($real_path))
-                throw new \Exception(lang('disk_usage_path_invalid'));
-
-            if ($this->duc->validate_coordinate($xcoord))
-                throw new \Exception(lang('disk_usage_coordinate_invalid'));
-
-            if ($this->duc->validate_coordinate($ycoord))
-                throw new \Exception(lang('disk_usage_coordinate_invalid'));
-        } catch (Engine_Exception $e) {
-            $this->page->view_exception($e);
-            return;
-        }
 
         // Load view data
         //---------------
 
         try {
             $data['initialized'] = $this->duc->is_initialized();
-            $data['real_path'] = $real_path;
-            $data['encoded_path'] = $encoded_path;
-            $data['xcoord'] = $xcoord;
-            $data['ycoord'] = $ycoord;
+
+            if ($data['initialized']) 
+                $data['image'] = $this->duc->get_image($_SERVER['QUERY_STRING']);
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
@@ -141,7 +112,6 @@ exit();
         if ($this->duc->validate_path($real_path))
             return;
 
-        header("Content-type: image/png");
         echo $this->duc->get_image($real_path);
     }
 

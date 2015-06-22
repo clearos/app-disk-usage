@@ -47,6 +47,6 @@ echo infobox_highlight(
 );
 echo "</div>";
 
-echo "<div id='usage' style='display: none'><a href='" . clearos_app_htdocs('disk_usage') . "/get_image.php?path=$real_path&amp;'>";
-echo "<img width='500' height='500' src='/app/disk_usage/get_image/" . $encoded_path . "' ismap='ismap' alt='-' />";
-echo "</a></div>";
+echo "<div id='usage' style='display: none'>";
+echo $image;
+echo "</div>";

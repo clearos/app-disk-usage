@@ -121,18 +121,22 @@ class Duc extends Engine
      * @throws Engine_Exception
      */
 
-    public function get_image($path = '/')
+    public function get_image($query_string)
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        $path = realpath($path);
+        if (empty($query_string))
+            $query_string = "?cmd=index&path=/";
 
-        Validation_Exception::is_valid($this->validate_path($path));
+        $css = clearos_app_htdocs('disk_usage') . '/disk_usage.css';
 
-        $command = escapeshellcmd(self::COMMAND_DUC . ' --action image --path ' . $path);
+        $shell = new Shell();
+        $options['env'] = "SCRIPT_NAME='/app/disk_usage/' QUERY_STRING=\"$query_string\"";
+        $shell->execute(self::COMMAND_DUC, ' cgi --no-header --css-url=' . $css . ' /', FALSE, $options);
+        $output = $shell->get_output();
 
         ob_start();
-        passthru($command);
+        echo implode("\n", $output);
         $png = ob_get_clean();
 
         return $png;
