@@ -3,7 +3,7 @@ Name: app-disk-usage
 Epoch: 1
 Version: 2.1.0
 Release: 1%{dist}
-Summary: **disk_usage_app_name**
+Summary: Disk Usage Report
 License: GPLv3
 Group: ClearOS/Apps
 Source: %{name}-%{version}.tar.gz
@@ -12,17 +12,17 @@ Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-**disk_usage_app_description**
+The Disk Usage Report app displays your system hard disk usage and provides a clickable drill down report.
 
 %package core
-Summary: **disk_usage_app_name** - Core
+Summary: Disk Usage Report - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: duc >= 1.3.3
 
 %description core
-**disk_usage_app_description**
+The Disk Usage Report app displays your system hard disk usage and provides a clickable drill down report.
 
 This package provides the core API and libraries.
 
@@ -35,6 +35,7 @@ mkdir -p -m 755 %{buildroot}/usr/clearos/apps/disk_usage
 cp -r * %{buildroot}/usr/clearos/apps/disk_usage/
 
 install -d -m 755 %{buildroot}/var/clearos/disk_usage
+install -d -m 0755 %{buildroot}/var/clearos/disk_usage/backup
 install -D -m 0644 packaging/app-disk-usage.cron %{buildroot}/etc/cron.d/app-disk-usage
 install -D -m 0755 packaging/duc-updatedb %{buildroot}/usr/sbin/duc-updatedb
 
@@ -76,6 +77,7 @@ exit 0
 %exclude /usr/clearos/apps/disk_usage/packaging
 %dir /usr/clearos/apps/disk_usage
 %dir %attr(755,webconfig,webconfig) /var/clearos/disk_usage
+%dir /var/clearos/disk_usage/backup
 /usr/clearos/apps/disk_usage/deploy
 /usr/clearos/apps/disk_usage/language
 /usr/clearos/apps/disk_usage/libraries

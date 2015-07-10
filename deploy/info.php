@@ -42,7 +42,8 @@ $app['core_file_manifest'] = array(
 );
 
 $app['core_directory_manifest'] = array(
-   '/var/clearos/disk_usage' => array(
+    '/var/clearos/disk_usage/backup' => array(),
+    '/var/clearos/disk_usage' => array(
        'mode' => '755',
        'owner' => 'webconfig',
        'group' => 'webconfig'

@@ -1,0 +1,2 @@
+[global]
+database /var/clearos/disk_usage/duc.db
