@@ -128,11 +128,9 @@ class Duc extends Engine
         if (empty($query_string))
             $query_string = "?cmd=index&path=/";
 
-        $css = clearos_app_htdocs('disk_usage') . '/disk_usage.css';
-
         $shell = new Shell();
         $options['env'] = "SCRIPT_NAME='/app/disk_usage/' QUERY_STRING=\"$query_string\"";
-        $shell->execute(self::COMMAND_DUC, ' cgi --no-header --css-url=' . $css . ' /', FALSE, $options);
+        $shell->execute(self::COMMAND_DUC, ' cgi --no-header /', FALSE, $options);
         $output = $shell->get_output();
 
         ob_start();
