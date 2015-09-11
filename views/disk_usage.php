@@ -47,6 +47,4 @@ echo infobox_highlight(
 );
 echo "</div>";
 
-echo "<div id='usage' style='display: none'>";
 echo $image;
-echo "</div>";

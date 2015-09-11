@@ -55,7 +55,6 @@ $(document).ready(function() {
     reload = false;
 
     $("#working").hide();
-    $("#usage").hide();
 
     getUsageData();
 
@@ -80,10 +79,8 @@ $(document).ready(function() {
             $("#working").hide();
             if (reload)
                 window.location = '/app/disk_usage/';
-            $("#usage").show();
         } else {
             $("#working").show();
-            $("#usage").hide();
             reload = true;
         }
 	}
