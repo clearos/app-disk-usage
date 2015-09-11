@@ -1,7 +1,7 @@
 
 Name: app-disk-usage
 Epoch: 1
-Version: 2.1.6
+Version: 2.1.15
 Release: 1%{dist}
 Summary: Disk Usage Report
 License: GPLv3
