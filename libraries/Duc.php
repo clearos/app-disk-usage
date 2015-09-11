@@ -130,7 +130,7 @@ class Duc extends Engine
 
         $shell = new Shell();
         $options['env'] = "SCRIPT_NAME='/app/disk_usage/' QUERY_STRING=\"$query_string\"";
-        $shell->execute(self::COMMAND_DUC, ' cgi --no-header /', FALSE, $options);
+        $shell->execute(self::COMMAND_DUC, ' cgi --no-header --size=600 /', FALSE, $options);
         $output = $shell->get_output();
 
         ob_start();
